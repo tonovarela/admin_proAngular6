@@ -1,5 +1,6 @@
+import { LoginGuardGuard } from './../services/guards/login-guard.guard';
 import { RxjsComponent } from './rxjs/rxjs.component';
-import { Routes , RouterModule} from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { PagesComponent } from './pages.component';
@@ -10,7 +11,9 @@ import { PromesasComponent } from './promesas/promesas.component';
 
 
 const pagesRoutes: Routes = [
- { path: '' , component: PagesComponent , children: [
+ { path: '' , component: PagesComponent ,
+    canActivate: [ LoginGuardGuard ],
+  children: [
         { path: 'dashboard', component: DashboardComponent , data: {titulo: 'Dashboard' }},
         { path: 'progress', component: ProgressComponent, data: {titulo: 'Progress' }},
         { path: 'grafica1', component: Grafica1Component, data: {titulo: 'Gráficas' }},
