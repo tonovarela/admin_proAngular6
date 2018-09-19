@@ -1,3 +1,4 @@
+import { PipesModule } from './../pipes/pipes.module';
 import { PAGESROUTES } from './pages.routes';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +13,8 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -25,7 +28,8 @@ declarations: [
     GraficoDonaComponent,
     AccountSettingsComponent,
     PromesasComponent,
-    RxjsComponent
+    RxjsComponent,
+    ProfileComponent
 ],
 exports: [
     PagesComponent,
@@ -39,7 +43,9 @@ imports: [
     SharedModule,
     ChartsModule,
     PAGESROUTES,
-    FormsModule
+    FormsModule,
+    PipesModule,
+    CommonModule
 ]
 })
 export class PagesModule { }

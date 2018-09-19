@@ -1,3 +1,4 @@
+
 import { Router } from '@angular/router';
 import { map, filter } from 'rxjs/operators';
 import { URL_SERVICIOS } from './../../config/config';
@@ -6,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Usuario } from '../../models/usuario.model';
 import swal from 'sweetalert';
-import { NullTemplateVisitor } from '@angular/compiler';
+import { SubirArchivoService } from 'src/app/services/subir-archivo/subir-archivo.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +16,10 @@ import { NullTemplateVisitor } from '@angular/compiler';
 export class UsuarioService {
   usuario: Usuario;
   token: string;
-  constructor(public http: HttpClient, public router: Router) {
+  constructor(public http: HttpClient,
+    public router: Router,
+    public _subirArchivoService: SubirArchivoService
+  ) {
     this.cargarStorage();
 
   }
@@ -24,6 +29,19 @@ export class UsuarioService {
       map(resp => {
         swal('usuario Creado', usuario.email, 'success');
         return resp;
+      })
+    );
+  }
+
+  actualizarUsuario(usuario: Usuario) {
+   let url = URL_SERVICIOS + '/usuario/' + usuario._id;
+   url += '?token=' + this.token;
+    return this.http.put(url, usuario).pipe(
+      map((resp: any) => {
+       const usuarioDB: Usuario = resp.usuario;
+        this.guardarStorage(usuarioDB._id, this.token, usuarioDB );
+        swal('Usuario actualizado', usuario.nombre, 'success');
+        return true;
       })
     );
   }
@@ -39,7 +57,6 @@ export class UsuarioService {
   }
 
   estaLoguedo() {
-    console.log(this.token);
     return (this.token.length > 5) ? true : false;
   }
 
@@ -83,4 +100,15 @@ export class UsuarioService {
       })
     );
   }
+
+  cambiarImagen (file: File ) {
+    this._subirArchivoService.fileUpload(file, 'usuarios' , this.usuario._id).subscribe((resp: any) => {
+      swal('Imagen Actualizada', resp.usuario.nombre , 'success');
+      this.usuario.img = resp.usuario.img;
+      this.guardarStorage(this.usuario._id, this.token, resp.usuario);
+    
+
+     console.log(resp.usuario.img);
+    });
+}
 }

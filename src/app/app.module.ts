@@ -18,12 +18,12 @@ import { PagesComponent } from './pages/pages.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent,
-
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

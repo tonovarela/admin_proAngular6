@@ -9,6 +9,7 @@ import {
   SidebarService,
   SettingsService,
   UsuarioService,
+  SubirArchivoService,
   LoginGuardGuard
 } from './service.index';
 
@@ -18,6 +19,7 @@ import {
     HttpClientModule
   ],
   providers: [ SharedService,
+    SubirArchivoService,
     SidebarService,
     LoginGuardGuard,
     SettingsService],
