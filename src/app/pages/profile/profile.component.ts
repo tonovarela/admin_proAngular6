@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {}
+
   seleccionImagen(archivo: File) {
     if (!archivo) {
       this.imagenSubir = null;
@@ -29,7 +30,6 @@ export class ProfileComponent implements OnInit {
    }
 
     this.imagenSubir = archivo;
-
     const reader = new FileReader();
     const urlImagenTemp = reader.readAsDataURL(archivo);
     reader.onloadend = ()  => {
