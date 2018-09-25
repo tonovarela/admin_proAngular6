@@ -1,3 +1,4 @@
+import { HospitalesComponent } from './hospitales/hospitales.component';
 import { LoginGuardGuard } from './../services/guards/login-guard.guard';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
@@ -10,6 +11,8 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
 
 
 const pagesRoutes: Routes = [
@@ -26,6 +29,9 @@ const pagesRoutes: Routes = [
 
         // Mantenimientos
         { path: 'usuarios', component: UsuariosComponent , data: {titulo: 'Mantenimientos de usuarios' }},
+        { path: 'hospitales', component: HospitalesComponent , data: {titulo: 'Mantenimientos de hospitales' }},
+        { path: 'medicos', component: MedicosComponent , data: {titulo: 'Mantenimientos de medicos' }},
+        { path: 'medico/:id', component: MedicoComponent , data: {titulo: 'Actualizar médico' }},
         { path: '', redirectTo: '/dashboard', pathMatch: 'full'}
     ]}
 ];

@@ -19,8 +19,9 @@ export class ModalUploadComponent implements OnInit {
   ngOnInit() {
   }
    subirImagen() {
+     console.log(this.imagenSubir, this._modalUploadService.tipo, this._modalUploadService.id);
      this._subirArchivoService.fileUpload(this.imagenSubir, this._modalUploadService.tipo, this._modalUploadService.id )
-     .subscribe( (resp) => {
+     .subscribe( (resp: any) => {
        this._modalUploadService.notificacion.emit(resp);
        this.cerrarModal();
      } );

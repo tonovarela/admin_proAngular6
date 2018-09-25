@@ -10,7 +10,9 @@ export class SubirArchivoService {
   constructor(public _http: HttpClient) { }
 
   fileUpload(archivo: File, tipo: string , id: string) {
+    console.log(tipo, id);
     const url = URL_SERVICIOS + '/upload/' + tipo + '/' + id;
+    console.log(url);
     const formData = new FormData();
     formData.append('imagen', archivo, archivo.name);
     return this._http.put(url, formData, { reportProgress: true });

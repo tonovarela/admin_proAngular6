@@ -1,0 +1,68 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input type="text" (keyup)="buscarHospital(input.value)" class="form-control" placeholder="Buscar hospital" />
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <div class="fa fa-refresh fa-spin fa-2x"></div>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+
+    </div>
+</div>
+<div class='row animated fadeIn' *ngIf="!cargando">
+    <div class='col-12'>
+        <div class='card'>
+            <div class='card-body'>
+                <div class="text-right">
+                    <button type="button" class="btn btn-rounded btn-primary" (click)="crearHospital()">
+                        <i class="fa fa-plus">                            
+                        </i> Crear Hospital
+                    </button>
+                </div>
+
+
+
+                <h3 class="card-title"> Usuarios registrados (<small>{{totalRegistros}}</small>)</h3>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hospital of hospitales">
+
+                            <td style="width: 70px"><img (click)="mostrarModal(hospital)" class="pointer" width="50" [src]="hospital.img | imagen:'hospital'" /></td>
+                            <td class="col-md-8"><input type="text" class="form-control" [(ngModel)]="hospital.nombre" name="nombre" /></td>
+                            <td>
+                                <button class="btn btn-primary" (click)="actualizarHospital(hospital)">
+                            <i class="fa fa-save" ></i> 
+                          </button>
+                                <button class="btn btn-danger" (click)="borrarHospital(hospital)">
+                              <i class="fa fa-trash-o"></i> 
+                            </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button *ngIf="desde>0" (click)="cambiarDesde(-5)" class="btn btn-secondary">Anteriores</button>
+                <button *ngIf="desde+5<=totalRegistros" (click)="cambiarDesde(+5)" class="btn btn-secondary">Siguientes</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>

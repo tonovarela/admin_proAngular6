@@ -24,9 +24,9 @@ export class UsuarioService {
     this.cargarStorage();
     // Actualiza la imagen del usuario logueado
     this._modalUploadService.notificacion.subscribe(resp => {
-      if (this.usuario._id === resp.usuario._id ) {
-         this.guardarStorage(this.usuario._id, this.token, resp.usuario);
-      }
+      // if (this.usuario._id === resp.usuario._id ) {
+      //    this.guardarStorage(this.usuario._id, this.token, resp.usuario);
+      // }
     });
   }
   crearUsuario(usuario: Usuario) {
