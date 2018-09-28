@@ -1,0 +1,64 @@
+<div class='row'>
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-body'>
+                <h4 class="card-title">Usuarios</h4>
+                <div class="alert alert-info" *ngIf="usuarios.length==0">No se encontrar usuarios con el termino {{termino}} </div>
+                <table class="table table hover">
+                    <tbody>
+                        <tr [routerLink]="['/usuarios']" class="pointer" *ngFor="let usuario of usuarios">
+                            <td><img [src]="usuario.img | imagen " class="img-fluid" /></td>
+                            <td>{{usuario.nombre}}</td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-body'>
+                <h4 class="card-title">Médicos</h4>
+                <div class="alert alert-info" *ngIf="medicos.length==0">No se encontrar medicos con el termino {{termino}} </div>
+                <table class="table table hover">
+                    <tbody>
+                        <tr [routerLink]="['/medico',medico._id]" class="pointer" *ngFor="let medico of medicos">
+                            <td><img [src]="medico.img | imagen:'medico' " class="img-fluid" /></td>
+                            <td>{{medico.nombre}}</td>
+
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class='col-4'>
+        <div class='card'>
+            <div class='card-body'>
+                <h4 class="card-title">Hospitales</h4>
+                <div class="alert alert-info" *ngIf="hospitales.length==0">No se encontrar Hospitales con el termino {{termino}} </div>
+                <table class="table table hover">
+                    <tbody>
+                        <tr [routerLink]="['/hospitales']" class="pointer" *ngFor='let hospital of hospitales'>
+                            <td><img [src]="hospital.img | imagen:'hospital' " class="img-fluid" /></td>
+                            <td>{{hospital.nombre}}</td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>

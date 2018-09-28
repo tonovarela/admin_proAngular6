@@ -9,15 +9,15 @@ import { HospitalService } from './hospital/hospital.service';
 
 
 
-
 import {
   SharedService,
   SidebarService,
   SettingsService,
   UsuarioService,
   SubirArchivoService,
-  LoginGuardGuard,
+  LoginGuardGuard
 } from './service.index';
+
 
 @NgModule({
   imports: [
