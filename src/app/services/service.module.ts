@@ -9,13 +9,15 @@ import { HospitalService } from './hospital/hospital.service';
 
 
 
+
 import {
   SharedService,
   SidebarService,
   SettingsService,
   UsuarioService,
   SubirArchivoService,
-  LoginGuardGuard
+  LoginGuardGuard,
+  VerificaTokenGuard
 } from './service.index';
 
 
@@ -28,6 +30,7 @@ import {
     SubirArchivoService,
     SidebarService,
     LoginGuardGuard,
+    VerificaTokenGuard,
     SettingsService,
     ModalUploadService,
     HospitalService,

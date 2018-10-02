@@ -17,6 +17,7 @@ import { ServiceModule } from './services/service.module';
 import { PagesModule } from './pages/pages.module';
 
 import { SharedModule } from './shared/shared.module';
+import { PagesComponent } from './pages/pages.component';
 
 
 
@@ -28,11 +29,12 @@ import { SharedModule } from './shared/shared.module';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    PagesComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTES,
-    PagesModule,
+    // PagesModule,
     FormsModule,
     ReactiveFormsModule,
     ServiceModule,
